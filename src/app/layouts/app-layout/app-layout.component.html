@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="container">
+    <h1 class="logo"><a routerLink="/" class="a-logo"> Risk Management App</a></h1>
+    <ul id="nav-ul" class="nav nav-right">
+      <li routerLinkActive="active" ><a routerLink="/login">Manage Risk</a></li>
+      <li><a (click) = "logout()">Logout</a></li>
+      <li routerLinkActive="active"><span>{{userName}}</span></li>
+      <li routerLinkActive="active"><span>Кр</span></li>
+    </ul>
+  </div>
+</nav>
+
+<app-main-page></app-main-page>
+

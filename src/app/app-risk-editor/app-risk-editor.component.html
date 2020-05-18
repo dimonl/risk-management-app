@@ -1,0 +1,50 @@
+
+<div class="editor-container">
+
+  <div class="risk-properties">
+    <input type="text" class="risk-name" disabled value={{currentRisk.nameRisk}}>
+    <span>Description</span>
+    <textarea type="text" class="risk-description" rows="5" cols="50" value={{currentRisk.description}}></textarea>
+  </div>
+
+  <div class="parametres">
+    <div class="parametres-name">
+      <div class="col-header"></div>
+      <div class="line">Probability</div>
+      <div class="errors"></div>
+      <div class="line">Impact Time</div>
+      <div class="errors"></div>
+    </div>
+    <div class="parametres-min">
+      <div class="col-header">Min</div>
+      <div class="line"><input type="number" class="risk-min-probability"></div>
+      <div class="errors"></div>
+      <div class="line"><input type="number" class="risk-min-impact"></div>
+      <div class="errors"></div>
+    </div>
+    <div class="parametres-likely">
+      <div class="col-header">Likely</div>
+      <div class="line"><input type="number" class="risk-likely-probability" value={{currentRisk.probability}}></div>
+      <div class="errors"></div>
+      <div class="line"><input type="number" class="risk-likely-impact" value={{currentRisk.impactTime}}></div>
+      <div class="errors"></div>
+    </div>
+    <div class="parametres-max">
+      <div class="col-header">Max</div>
+      <div class="line"><input type="number" class="risk-max-probability"></div>
+      <div class="errors"></div>
+      <div class="line"><input type="number" class="risk-max-impact"></div>
+      <div class="errors"></div>
+    </div>
+  </div>
+
+  <div class="footer-buttons">
+
+  </div>
+
+  <div class="edit-risk-action">
+    <!--    type="submit" [disabled]="form.invalid" (click)="onSubmit()"-->
+    <button  class="modal-action btn"><span>Login</span></button>
+    <button  class="modal-action btn"><span>Register</span></button>
+  </div>
+</div>

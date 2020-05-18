@@ -1,0 +1,87 @@
+.editor-container{
+  margin:1%;
+  display: flex;
+  flex-direction: column;
+}
+
+.risk-properties{
+  margin:1%;
+  display: flex;
+  flex-direction: column;
+
+}
+.parametres{
+  margin-top:3em;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.parametres input{
+
+  width: 50%;
+  height: 30px;
+}
+
+.parametres-name,
+.parametres-min,
+.parametres-likely,
+.parametres-max {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+}
+
+.col-header{
+display: block;
+  height:2em;
+
+}
+
+.line{
+  display: block;
+  height:2em;
+  align-items: center;
+}
+
+.errors{
+  display: block;
+  height:2em;
+}
+
+.edit-risk-action{
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+}
+
+
+//button styling
+.btn {
+  position: relative;
+  display: block;
+  margin:  20px 10px;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #5264AE;
+  color: #ecf0f1;
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #4500A8;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+//button styling end

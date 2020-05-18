@@ -1,0 +1,26 @@
+
+.main-content{
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.col-left{
+  display:block;
+  height: 100%;
+  //background-color: green;
+  flex-grow:5;
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin-right: 1px;
+}
+
+.col-right{
+  height: 100%;
+  display:block;
+  //background-color: red;
+  flex-grow:1;
+  margin-left: 1px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}

@@ -1,0 +1,7 @@
+<ul class="risks">
+  <li *ngFor="let risk of userRisks"
+      [class.selected]="risk === selectedRisk"
+      (click)="onSelect(risk)">
+    <span class="badge">{{risk.nameRisk}}</span> {{risk.impactTime}} {{risk.probability}}
+  </li>
+</ul>
