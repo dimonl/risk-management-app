@@ -169,3 +169,11 @@ input:focus ~ .highlight {
   to 	{ width:0; background:transparent; }
 }
 // input styling end
+
+
+//error styling
+.input__error{
+  top:-10px;
+  font-size:14px;
+  color: #ae3027;
+}

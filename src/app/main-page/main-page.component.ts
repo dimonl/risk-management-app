@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {RiskService} from '../services/risk.service';
-import {Risk} from '../interfaces';
+import {RiskService} from '../shared/services/risk.service';
+import {Risk} from '../shared/interfaces';
 
 @Component({
   selector: 'app-main-page',

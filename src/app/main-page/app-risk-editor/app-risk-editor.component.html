@@ -2,9 +2,9 @@
 <div class="editor-container">
 
   <div class="risk-properties">
-    <input type="text" class="risk-name" disabled value={{currentRisk.nameRisk}}>
+    <input type="text" class="risk-name" [disabled]="!manageRisk" [(ngModel)] = "changedRisk.nameRisk" />
     <span>Description</span>
-    <textarea type="text" class="risk-description" rows="5" cols="50" value={{currentRisk.description}}></textarea>
+    <textarea type="text" class="risk-description" rows="5" cols="50" [(ngModel)] = "changedRisk.description"></textarea>
   </div>
 
   <div class="parametres">
@@ -24,9 +24,9 @@
     </div>
     <div class="parametres-likely">
       <div class="col-header">Likely</div>
-      <div class="line"><input type="number" class="risk-likely-probability" value={{currentRisk.probability}}></div>
+      <div class="line"><input type="number" class="risk-likely-probability"  [(ngModel)] = "changedRisk.probability"></div>
       <div class="errors"></div>
-      <div class="line"><input type="number" class="risk-likely-impact" value={{currentRisk.impactTime}}></div>
+      <div class="line"><input type="number" class="risk-likely-impact" [(ngModel)] = "changedRisk.impactTime"></div>
       <div class="errors"></div>
     </div>
     <div class="parametres-max">
@@ -43,8 +43,8 @@
   </div>
 
   <div class="edit-risk-action">
-    <!--    type="submit" [disabled]="form.invalid" (click)="onSubmit()"-->
-    <button  class="modal-action btn"><span>Login</span></button>
-    <button  class="modal-action btn"><span>Register</span></button>
+    <button  class="modal-action btn left" (click)="onApply()"><span>Apply</span></button>
+    <button  class="modal-action btn right" (click)="onRemove()" *ngIf="manageRisk"><span>Remove</span></button>
+    <button  class="modal-action btn right" (click)="onReset()"><span>Reset</span></button>
   </div>
 </div>

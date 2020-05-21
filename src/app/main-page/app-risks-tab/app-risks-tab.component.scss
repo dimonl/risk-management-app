@@ -1,0 +1,90 @@
+.risks {
+  //margin: 0 0 2em 0;
+  display: flex;
+  list-style-type: none;
+  width:91%;
+  border:1px solid gray;
+  margin: 1% 1%;
+  flex-direction:column;
+  padding:0;
+}
+.risks li {
+  cursor: pointer;
+  //position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+.risks li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.risks li.selected {
+  background-color: #CFD8DC;
+  color: white;
+}
+.risks li.selected:hover {
+  background-color: #BBD8DC;
+  color: white;
+}
+
+.risks .badge {
+  display: inline-block;
+  //font-size: small;
+  //color: white;
+  padding-left: 1em;
+  //padding: 0.4em 0.7em 0 0.7em;
+  //background-color:#405061;
+  line-height: 1em;
+  position: relative;
+  //left: -1px;
+  //top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+
+
+
+.edit-risk-action{
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+
+}
+
+
+//button styling
+.btn {
+  position: relative;
+  display: block;
+  margin:  20px 10px;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #5264AE;
+  color: #ecf0f1;
+  transition: background-color .3s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: #4500A8;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn span {
+  display: block;
+  padding: 12px 24px;
+}
+//button styling end

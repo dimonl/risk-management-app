@@ -50,9 +50,6 @@ export class LoginService {
       this.authUser = null;
     } else {
       this.authUser = user;
-      // this.authUser.id = user.id;
-      // this.authUser.name = user.name;
-      // this.authUser.password = user.password;
     }
   }
 

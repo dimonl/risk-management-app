@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Risk} from '../interfaces';
+import {Risk} from '../../shared/interfaces';
+import {RiskService} from '../../shared/services/risk.service';
 
 @Component({
   selector: 'app-risks-tab',
@@ -11,11 +12,17 @@ export class AppRisksTabComponent implements OnInit {
   selectedRisk: Risk;
   @Input() userRisks: Risk[];
   @Output() messageEvent = new EventEmitter<Risk>();
+  manageRisk = false;
+  userRisksList: Risk[];
 
-  constructor() {
+  constructor(private riskService: RiskService) {
+    this.messageEvent.emit(new Risk('11111', '1', '1', '1', 0, 0));
   }
 
   ngOnInit(): void {
+
+    this.userRisksList = this.riskService.getRiskArray();
+    console.log(this.userRisksList);
     this.userRisks = [
       {
         id: '1',
@@ -34,11 +41,17 @@ export class AppRisksTabComponent implements OnInit {
         probability: 0.7,
       },
       ];
+    this.riskService.manageRisks.subscribe(el => this.manageRisk = el);
   }
 
 
   onSelect(risk: Risk) {
     this.selectedRisk = risk;
+    this.riskService.setSelectedRisk(risk);
     this.messageEvent.emit(this.selectedRisk);
+  }
+
+  AddRisk() {
+
   }
 }

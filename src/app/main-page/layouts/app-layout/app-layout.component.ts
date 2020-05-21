@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {LoginService} from '../../services/login.service';
+import {LoginService} from '../../../shared/services/login.service';
+import {RiskService} from '../../../shared/services/risk.service';
 
 @Component({
   selector: 'app-app-layout',
@@ -11,6 +12,7 @@ export class AppLayoutComponent implements OnInit {
   userName: string = localStorage.getItem('user');
 
   constructor(private auth: LoginService,
+              private riskService: RiskService,
               private router: Router) {
 }
 
@@ -23,4 +25,7 @@ logout(): void {
     this.router.navigate(['/login']);
 }
 
+  manageRisks() {
+    this.riskService.manageRisks.next(!this.riskService.manageRisks.value);
+  }
 }

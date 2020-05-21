@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RiskService} from '../../shared/services/risk.service';
 
 @Component({
   selector: 'app-control-panel',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppControlPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private riskService: RiskService) { }
 
   ngOnInit(): void {
   }
 
+  sortby(sortType: string) {
+    this.riskService.sortby(sortType);
+  }
 }

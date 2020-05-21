@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LoginService} from '../services/login.service';
+import {LoginService} from '../../shared/services/login.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {User} from '../interfaces';
+import {User} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-form-login',
@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: new FormControl(null, [Validators.required, Validators.minLength(6)])
     });
     this.route.queryParams.subscribe((params: Params) => {
-
+      if (params.accessDenied) {
+        console.log('accessDenied');
+      }
     });
   }
 
