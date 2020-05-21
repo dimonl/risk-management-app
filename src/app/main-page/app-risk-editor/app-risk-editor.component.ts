@@ -31,13 +31,7 @@ export class AppRiskEditorComponent implements OnInit {
       this.changedRisk = JSON.parse(JSON.stringify(el));
       this.currentRisk = el;
     });
-
-
-    // this.changedRisk = JSON.parse(JSON.stringify(this.currentRisk));
-    // this.changedRisk = this.currentRisk;
     this.riskService.manageRisks.subscribe(el => this.manageRisk = el);
-    // this.unchangedRisk = this.currentRisk;
-    // console.log(this.unchangedRisk);
   }
 
 
@@ -48,10 +42,8 @@ export class AppRiskEditorComponent implements OnInit {
   onApply() {
     this.riskService.updateSelectedRisk(this.changedRisk).subscribe(
       (data: Risk) => {
-        //console.log(data);
-        // console.log(localStorage.getItem('id'));
-        // console.log(localStorage.getItem('name'));
-      },
+        this.riskService.getRisks();
+        },
       error => console.log(error)
     );
   }

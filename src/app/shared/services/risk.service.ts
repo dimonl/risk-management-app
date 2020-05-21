@@ -14,8 +14,8 @@ export class RiskService {
   constructor(private http: HttpClient, private auth: LoginService) {
   }
 
-  private riskArray: Risk[] = [];
 
+  private riskArray = new BehaviorSubject<Array<Risk>>([new Risk('11111', '', '', '', 0, 0)]);
 
   public manageRisks = new BehaviorSubject<boolean>(false);
 
@@ -24,23 +24,14 @@ export class RiskService {
   getRisks(): Observable<Array<Risk>> {
 
     const currentUser: User = this.auth.getUser();
+    this.http.get<Array<Risk>>(RisksAPI).subscribe(
+      next => {
+        this.riskArray.next(next.filter((el) => el.userID === currentUser.id));
+      }
+    );
 
-    return new Observable((observer) => {
-      this.http.get<Array<Risk>>(RisksAPI).subscribe(
-        next => {
-          this.riskArray = next.filter((el) => el.userID === currentUser.id);
-          observer.next(this.riskArray);
-        }
-      );
-    });
-  }
+    return this.riskArray.asObservable();
 
-  getRiskArray(): Risk[] {
-    return this.riskArray;
-  }
-
-  setRiskArray(value: Risk[]) {
-    this.riskArray = value;
   }
 
   getSelectedRisk(): Observable<Risk> {
@@ -52,7 +43,7 @@ export class RiskService {
   }
 
   sortby(sortType: string) {
-    this.riskArray.sort((firstRisk, secondRisk) => {
+    this.riskArray.value.sort((firstRisk, secondRisk) => {
       let result: number;
       switch (sortType) {
         case 'by_time':

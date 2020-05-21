@@ -15,7 +15,7 @@ const routes: Routes = [
     ]
   },
   { // canActivate: [LoginGuard],
-    path: '', component: AppLayoutComponent,   children: [
+    path: '', component: AppLayoutComponent, canActivate: [LoginGuard],  children: [
      {path: 'mainpage', component: MainPageComponent},
     ]
   }

@@ -2,12 +2,11 @@
   <div class="col-left">
     <app-control-panel></app-control-panel>
     <app-risks-tab
-      [userRisks]="risksList"
+
       (messageEvent)="receiveMessage($event)">
     </app-risks-tab>
   </div>
   <div class="col-right">
     <app-risk-editor></app-risk-editor>
-<!--    [currentRisk]="currentRisk"-->
   </div>
 </div>
