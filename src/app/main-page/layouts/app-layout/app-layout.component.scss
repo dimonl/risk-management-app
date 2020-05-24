@@ -20,13 +20,14 @@
 
 /* nav links */
 .nav {
+  display:flex;
+  flex-direction:row;
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
 .nav li {
-  display: inline-block;
   margin-left: 10px;
   cursor: pointer;
 }
@@ -64,7 +65,7 @@
 
 @media screen and (max-width: 767px) {
   .container {
-    width: 90%;
+    width: 92%;
   }
 }
 
@@ -83,7 +84,7 @@
 @media screen and (min-width: 1200px) {
   .container {
     //width: 1170px;
-    width: 90%;
+    width: 92%;
   }
 }
 

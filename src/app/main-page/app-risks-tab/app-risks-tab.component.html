@@ -1,11 +1,14 @@
-<ul class="risks">
-  <li *ngFor="let risk of userRisksList"
-      [class.selected]="risk === selectedRisk"
-      (click)="onSelect(risk)">
-    <span class="badge">{{risk.nameRisk}}</span>  | {{risk.impactTime}} hrs | {{risk.probability}}%
-  </li>
-</ul>
-<div class="edit-risk-action" *ngIf="manageRisk">
-  <!--    type="submit" [disabled]="form.invalid" (click)="onSubmit()"-->
-  <button  class="modal-action btn left" (click)="AddRisk()"><span>AddRisk</span></button>
-</div>
+<!--<div class="list">-->
+  <div class="ul-list">
+    <ul class="risks">
+      <li *ngFor="let risk of userRisksList"
+          [class.selected]="risk === selectedRisk"
+          (click)="onSelect(risk)">
+        <span class="badge">{{risk.nameRisk}}</span> | {{risk.impactTime}} hrs | {{risk.probability}}%
+      </li>
+    </ul>
+  </div>
+  <div class="edit-risk-action" *ngIf="manageRisk">
+    <button class="modal-action btn left" (click)="AddRisk()"><span>AddRisk</span></button>
+  </div>
+<!--</div>-->

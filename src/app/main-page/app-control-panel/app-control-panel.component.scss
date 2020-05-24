@@ -9,10 +9,8 @@
 
 /* navbar */
 .navbar {
-  width: 100%;
+  width: 93%;
   height:2rem;
-  padding-left:1%;
-  //background-color: #5264AE;
   border: 1px solid gray;
   display: flex;
   align-items: center;
@@ -32,45 +30,6 @@
 }
 
 .navbar a {
-  //color: #FFF;
   text-decoration: none;
   cursor: pointer;
 }
-
-//.navbar a:hover {
-//  color: #5264AE;
-//}
-
-
-/* responsive */
-@media screen and (max-width: 677px) {
-  .control-header {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .control-header {
-    width: 90%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .control-header {
-    width: 750px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .control-header {
-    width: 960px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .control-header {
-    //width: 1170px;
-    width: 90%;
-  }
-}
-

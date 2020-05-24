@@ -8,8 +8,12 @@ import {Risk} from '../shared/interfaces';
   styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit {
+  currentRisk: Risk;
 
   constructor(private riskService: RiskService) {
+    this.riskService.getSelectedRisk().subscribe((el: Risk) => {
+      this.currentRisk = el;
+    });
   }
 
   ngOnInit(): void {

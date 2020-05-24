@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Risk} from '../../shared/interfaces';
 import {RiskService} from '../../shared/services/risk.service';
-import {emptyRisk, STORAGE_SAVED_TYPES} from '../../shared/const';
+import {CALC_FIELDS, emptyRisk, newRisk, STORAGE_SAVED_TYPES} from '../../shared/const';
 
 
 @Component({
@@ -19,9 +19,10 @@ export class AppRiskEditorComponent implements OnInit {
   public minImpactTime: number;
   public maxProbability: number;
   public maxImpactTime: number;
-  public error: string;
-  constructor(private riskService: RiskService) {
+  public errorProbability: string;
+  public errorImpactTime: string;
 
+  constructor(private riskService: RiskService) {
   }
 
   ngOnInit(): void {
@@ -34,17 +35,20 @@ export class AppRiskEditorComponent implements OnInit {
   }
 
 
-  onReset() {
+  onReset(): void {
     this.riskService.setSelectedRisk(this.currentRisk);
     this.maxImpactTime = 0;
     this.minImpactTime = 0;
     this.maxProbability = 0;
     this.minProbability = 0;
-    this.error = '';
+    this.errorProbability = '';
+    this.errorImpactTime = '';
   }
 
-  onApply() {
-    if (this.changedRisk.id === '') {
+  onApply(): void {
+    if ((this.changedRisk.id === newRisk.id) && (this.manageRisk)) {
+      console.log(this.changedRisk);
+      console.log(this.currentRisk);
       this.changedRisk.userID = localStorage.getItem(STORAGE_SAVED_TYPES.id);
       this.riskService.addNewRisk(this.changedRisk).subscribe(
         (data: Risk) => {
@@ -52,7 +56,7 @@ export class AppRiskEditorComponent implements OnInit {
         },
         error => console.log(error)
       );
-    } else {
+    } else if (!this.manageRisk) {
       this.riskService.updateSelectedRisk(this.changedRisk).subscribe(
         (data: Risk) => {
           this.riskService.getRisks();
@@ -63,7 +67,7 @@ export class AppRiskEditorComponent implements OnInit {
     this.riskService.setSelectedRisk(emptyRisk);
   }
 
-  onRemove() {
+  onRemove(): void {
     this.riskService.deleteSelectedRisk(this.currentRisk).subscribe(
       (data: Risk) => {
         this.riskService.getRisks();
@@ -73,59 +77,52 @@ export class AppRiskEditorComponent implements OnInit {
     this.riskService.setSelectedRisk(emptyRisk);
   }
 
-  onFieldChange(field: string) {
+  onFieldChange(field: string): void {
     switch (field) {
-      case 'probability':
+      case CALC_FIELDS.probability:
         this.minProbability = 0;
         this.maxProbability = 0;
-        this.error = '';
+        this.errorProbability = '';
+        this.errorImpactTime = '';
         break;
-      case 'impactTime':
+      case CALC_FIELDS.impactTime:
         this.minImpactTime = 0;
         this.maxImpactTime = 0;
-        this.error = '';
+        this.errorImpactTime = '';
+        this.errorImpactTime = '';
         break;
-      case 'min_probability':
+      case CALC_FIELDS.min_probability:
         if (this.minProbability > this.maxProbability) {
-          this.error = 'max_probability';
+          this.errorProbability = CALC_FIELDS.max_probability;
         }else{
-          this.error = '';
+          this.errorProbability = '';
           this.changedRisk.probability = (this.minProbability + this.maxProbability) / 2;
         }
         break;
-      case 'max_probability':
+      case CALC_FIELDS.max_probability:
         if (this.maxProbability < this.minProbability) {
-          this.error = 'min_probability';
+          this.errorProbability = CALC_FIELDS.min_probability;
         }else{
-          this.error = '';
+          this.errorProbability = '';
           this.changedRisk.probability = (this.minProbability + this.maxProbability) / 2;
         }
         break;
-      case 'min_impactTime':
+      case CALC_FIELDS.min_impactTime:
         if (this.minImpactTime > this.maxImpactTime) {
-          this.error = 'max_impactTime';
+          this.errorImpactTime = CALC_FIELDS.max_impactTime;
         }else{
-          this.error = '';
+          this.errorImpactTime = '';
           this.changedRisk.impactTime = (this.minImpactTime + this.maxImpactTime) / 2;
         }
         break;
-      case 'max_impactTime':
+      case CALC_FIELDS.max_impactTime:
         if (this.maxImpactTime < this.minImpactTime) {
-          this.error = 'min_impactTime';
+          this.errorImpactTime = CALC_FIELDS.min_impactTime;
         }else{
-          this.error = '';
+          this.errorImpactTime = '';
           this.changedRisk.impactTime = (this.minImpactTime + this.maxImpactTime) / 2;
         }
-
         break;
-
     }
   }
-
-
-  //  setError( typeField: string) {
-  //
-  // }
-
-
 }

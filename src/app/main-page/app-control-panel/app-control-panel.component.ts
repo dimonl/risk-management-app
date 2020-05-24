@@ -13,7 +13,7 @@ export class AppControlPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sortby(sortType: string) {
+  sortby(sortType: string): void {
     this.riskService.sortBy(sortType);
   }
 }

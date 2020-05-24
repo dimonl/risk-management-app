@@ -1,6 +1,5 @@
 .risks {
-  //margin: 0 0 2em 0;
-  display: flex;
+  overflow: auto;
   list-style-type: none;
   width:91%;
   border:1px solid gray;
@@ -10,7 +9,6 @@
 }
 .risks li {
   cursor: pointer;
-  //position: relative;
   left: 0;
   background-color: #EEE;
   margin: .5em;
@@ -34,22 +32,13 @@
 
 .risks .badge {
   display: inline-block;
-  //font-size: small;
-  //color: white;
   padding-left: 1em;
-  //padding: 0.4em 0.7em 0 0.7em;
-  //background-color:#405061;
   line-height: 1em;
   position: relative;
-  //left: -1px;
-  //top: -4px;
   height: 1.8em;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
-
-
-
 
 .edit-risk-action{
   display: flex;
@@ -57,7 +46,6 @@
   margin: 1rem;
 
 }
-
 
 //button styling
 .btn {

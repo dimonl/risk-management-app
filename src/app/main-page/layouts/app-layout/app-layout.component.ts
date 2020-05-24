@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService} from '../../../shared/services/login.service';
 import {RiskService} from '../../../shared/services/risk.service';
-import {MENU_NAMES} from '../../../shared/const';
+import {MENU_NAMES, STORAGE_SAVED_TYPES} from '../../../shared/const';
 
 @Component({
   selector: 'app-app-layout',
@@ -10,7 +10,8 @@ import {MENU_NAMES} from '../../../shared/const';
   styleUrls: ['./app-layout.component.scss']
 })
 export class AppLayoutComponent implements OnInit {
-  userName: string = localStorage.getItem('user');
+  userName: string = localStorage.getItem(STORAGE_SAVED_TYPES.name);
+
   NameCommand: string = MENU_NAMES.manageRisk;
 
   constructor(private auth: LoginService,
@@ -29,7 +30,7 @@ export class AppLayoutComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  manageRisks() {
+  manageRisks(): void {
     this.riskService.manageRisks.next(!this.riskService.manageRisks.value);
     this.NameCommand = this.changeMenuName(this.riskService.manageRisks.value);
   }

@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  public onSubmit() {
+  public onSubmit(): void {
     const user: User = {
       id: '',
       name: this.form.value.name,
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  public onRegister() {
+  public onRegister(): void {
     const user: User = {
       id: '',
       name: this.form.value.name,

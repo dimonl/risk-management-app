@@ -35,11 +35,11 @@ export class RiskService {
     return this.selectedRisk.asObservable();
   }
 
-  setSelectedRisk(value: Risk) {
+  setSelectedRisk(value: Risk): void {
     this.selectedRisk.next(value);
   }
 
-  sortBy(sortType: string) {
+  sortBy(sortType: string): void {
     this.sortAscending = !this.sortAscending;
     this.riskArray.value.sort((firstRisk, secondRisk) => {
       let result: boolean;

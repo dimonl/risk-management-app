@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Risk} from '../../shared/interfaces';
 import {RiskService} from '../../shared/services/risk.service';
-import {emptyRisk} from '../../shared/const';
+import {emptyRisk, newRisk} from '../../shared/const';
 
 @Component({
   selector: 'app-risks-tab',
@@ -23,12 +23,12 @@ export class AppRisksTabComponent implements OnInit {
   }
 
 
-  onSelect(risk: Risk) {
+  onSelect(risk: Risk): void {
     this.selectedRisk = risk;
     this.riskService.setSelectedRisk(risk);
   }
 
-  AddRisk() {
-    this.riskService.setSelectedRisk(emptyRisk);
+  AddRisk(): void {
+    this.riskService.setSelectedRisk(newRisk);// emptyRisk
   }
 }

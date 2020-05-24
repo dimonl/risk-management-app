@@ -1,4 +1,3 @@
-
 <div class="editor-container">
 
   <div class="risk-properties">
@@ -20,13 +19,13 @@
       <div class="line"><input type="number" class="risk-min-probability" [(ngModel)] = "minProbability" (ngModelChange)="onFieldChange('min_probability')"> %</div>
       <div class="errors">
         <div class="helper-text red-text input__error">
-          <span *ngIf="error === 'min_probability'"> Min should be less than Max</span>
+          <span *ngIf="errorProbability === 'min_probability'"> Min should be less than Max</span>
         </div>
       </div>
       <div class="line"><input type="number" class="risk-min-impact" [(ngModel)] = "minImpactTime" (ngModelChange)="onFieldChange('min_impactTime')"> h</div>
       <div class="errors">
         <div class="helper-text red-text input__error">
-          <span *ngIf="error === 'min_impactTime'"> Min should be less than Max</span>
+          <span *ngIf="errorImpactTime === 'min_impactTime'"> Min should be less than Max</span>
         </div>
       </div>
     </div>
@@ -42,13 +41,13 @@
       <div class="line"><input type="number" class="risk-max-probability" [(ngModel)] = "maxProbability" (ngModelChange)="onFieldChange('max_probability')"> %</div>
       <div class="errors">
         <div class="helper-text red-text input__error">
-          <span *ngIf="error === 'max_probability'"> Max should be more than Min</span>
+          <span *ngIf="errorProbability === 'max_probability'"> Max should be more than Min</span>
         </div>
       </div>
       <div class="line"><input type="number" class="risk-max-impact" [(ngModel)] = "maxImpactTime" (ngModelChange)="onFieldChange('max_impactTime')"> h</div>
       <div class="errors">
         <div class="helper-text red-text input__error">
-          <span *ngIf="error === 'max_impactTime'"> Max should be more than Min</span>
+          <span *ngIf="errorImpactTime === 'max_impactTime'"> Max should be more than Min</span>
         </div>
       </div>
     </div>

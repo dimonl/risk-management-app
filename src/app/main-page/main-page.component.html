@@ -1,12 +1,10 @@
 <div class="main-content">
   <div class="col-left">
     <app-control-panel></app-control-panel>
-    <app-risks-tab
-
-      >
+    <app-risks-tab>
     </app-risks-tab>
   </div>
-  <div class="col-right">
+  <div class="col-right" *ngIf="currentRisk.id">
     <app-risk-editor></app-risk-editor>
   </div>
 </div>

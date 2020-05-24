@@ -27,9 +27,9 @@ export class LoginService {
         next => {
           elem = next.filter((el) => el.name === user1.name && el.password === user1.password);
           if (elem.length !== 0){
-            this.setUser(elem[0]);
             localStorage.setItem(STORAGE_SAVED_TYPES.name, elem[0].name);
             localStorage.setItem(STORAGE_SAVED_TYPES.id, elem[0].id);
+            this.setUser(elem[0]);
             observer.next(elem[0]);
           }else {
             observer.error('error');
@@ -39,7 +39,7 @@ export class LoginService {
     });
   }
 
-  setUser(user: User) {
+  setUser(user: User): void {
     if (user === null) {
       this.authUser = null;
     } else {
@@ -55,7 +55,7 @@ export class LoginService {
     return !!this.authUser;
   }
 
-  logout() {
+  logout(): void {
     this.setUser(null);
     localStorage.clear();
   }
