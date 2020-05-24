@@ -12,13 +12,6 @@ export class MainPageComponent implements OnInit {
   constructor(private riskService: RiskService) {
   }
 
-
-  currentRisk: Risk;
-
   ngOnInit(): void {
-  }
-
-  receiveMessage($event) {
-    this.currentRisk = $event;
   }
 }

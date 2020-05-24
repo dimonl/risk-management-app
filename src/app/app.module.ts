@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login-page/login/login.component';
-import { AlertComponent } from './alert/alert.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
@@ -20,7 +19,6 @@ import { AppRiskEditorComponent } from './main-page/app-risk-editor/app-risk-edi
 @NgModule({
   declarations: [
     AppComponent,
-    AlertComponent,
     LoginComponent,
     AuthLayoutComponent,
     AppLayoutComponent,

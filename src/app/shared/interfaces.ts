@@ -6,16 +6,6 @@ export interface User {
 
 
 export class Risk {
-  // id: string;
-  // userID: string;
-  // nameRisk: string;
-  // description: string;
-  // impactTime: number;
-  // probability: number;
-
-//   public setimpact(el: string){
-//     this.impactTime = el;
-// }
   constructor(
     public id: string,
     public userID: string,
@@ -24,6 +14,4 @@ export class Risk {
     public impactTime: number,
     public probability: number) {
   }
-
-
 }

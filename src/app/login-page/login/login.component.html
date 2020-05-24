@@ -43,4 +43,8 @@
     <button [disabled]="form.invalid" class="modal-action btn" (click)="onSubmit()"><span>Login</span></button>
     <button [disabled]="form.invalid" class="modal-action btn" (click)="onRegister()"><span>Register</span></button>
   </div>
+
+  <div class=" login__error" *ngIf="wrongPassword">
+    <h3>Error!!! Wrong Name or Password!!</h3>
+  </div>
 </form>

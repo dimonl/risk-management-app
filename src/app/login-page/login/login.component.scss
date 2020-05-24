@@ -5,14 +5,6 @@
   display:block;
   background:#FFF;
   padding:10px 50px 50px;
-
-  //display: flex;
-  //flex-direction: column;
-  //align-items: center;
-  //height:200px;
-  //width:500px;
-  //margin:auto;
-  //border: 1px solid #ccc;
 }
 
 .card-header{
@@ -175,5 +167,8 @@ input:focus ~ .highlight {
 .input__error{
   top:-10px;
   font-size:14px;
+  color: #ae3027;
+}
+.login__error{
   color: #ae3027;
 }

@@ -14,6 +14,6 @@ export class AppControlPanelComponent implements OnInit {
   }
 
   sortby(sortType: string) {
-    this.riskService.sortby(sortType);
+    this.riskService.sortBy(sortType);
   }
 }

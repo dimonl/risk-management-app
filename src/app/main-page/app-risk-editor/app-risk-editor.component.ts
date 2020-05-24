@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Risk} from '../../shared/interfaces';
 import {RiskService} from '../../shared/services/risk.service';
+import {emptyRisk, STORAGE_SAVED_TYPES} from '../../shared/const';
+
 
 @Component({
   selector: 'app-risk-editor',
@@ -9,18 +11,15 @@ import {RiskService} from '../../shared/services/risk.service';
 })
 export class AppRiskEditorComponent implements OnInit {
 
-  // unchangedRisk: Risk;
-
   public currentRisk: Risk;
   public changedRisk: Risk = null;
 
-  manageRisk = false;
-
-
-  impactTime: number;
-  probability: number;
-
-
+  public manageRisk = false;
+  public minProbability: number;
+  public minImpactTime: number;
+  public maxProbability: number;
+  public maxImpactTime: number;
+  public error: string;
   constructor(private riskService: RiskService) {
 
   }
@@ -37,18 +36,96 @@ export class AppRiskEditorComponent implements OnInit {
 
   onReset() {
     this.riskService.setSelectedRisk(this.currentRisk);
+    this.maxImpactTime = 0;
+    this.minImpactTime = 0;
+    this.maxProbability = 0;
+    this.minProbability = 0;
+    this.error = '';
   }
 
   onApply() {
-    this.riskService.updateSelectedRisk(this.changedRisk).subscribe(
-      (data: Risk) => {
-        this.riskService.getRisks();
+    if (this.changedRisk.id === '') {
+      this.changedRisk.userID = localStorage.getItem(STORAGE_SAVED_TYPES.id);
+      this.riskService.addNewRisk(this.changedRisk).subscribe(
+        (data: Risk) => {
+          this.riskService.getRisks();
         },
-      error => console.log(error)
-    );
+        error => console.log(error)
+      );
+    } else {
+      this.riskService.updateSelectedRisk(this.changedRisk).subscribe(
+        (data: Risk) => {
+          this.riskService.getRisks();
+        },
+        error => console.log(error)
+      );
+    }
+    this.riskService.setSelectedRisk(emptyRisk);
   }
 
   onRemove() {
-
+    this.riskService.deleteSelectedRisk(this.currentRisk).subscribe(
+      (data: Risk) => {
+        this.riskService.getRisks();
+      },
+      error => console.log(error)
+    );
+    this.riskService.setSelectedRisk(emptyRisk);
   }
+
+  onFieldChange(field: string) {
+    switch (field) {
+      case 'probability':
+        this.minProbability = 0;
+        this.maxProbability = 0;
+        this.error = '';
+        break;
+      case 'impactTime':
+        this.minImpactTime = 0;
+        this.maxImpactTime = 0;
+        this.error = '';
+        break;
+      case 'min_probability':
+        if (this.minProbability > this.maxProbability) {
+          this.error = 'max_probability';
+        }else{
+          this.error = '';
+          this.changedRisk.probability = (this.minProbability + this.maxProbability) / 2;
+        }
+        break;
+      case 'max_probability':
+        if (this.maxProbability < this.minProbability) {
+          this.error = 'min_probability';
+        }else{
+          this.error = '';
+          this.changedRisk.probability = (this.minProbability + this.maxProbability) / 2;
+        }
+        break;
+      case 'min_impactTime':
+        if (this.minImpactTime > this.maxImpactTime) {
+          this.error = 'max_impactTime';
+        }else{
+          this.error = '';
+          this.changedRisk.impactTime = (this.minImpactTime + this.maxImpactTime) / 2;
+        }
+        break;
+      case 'max_impactTime':
+        if (this.maxImpactTime < this.minImpactTime) {
+          this.error = 'min_impactTime';
+        }else{
+          this.error = '';
+          this.changedRisk.impactTime = (this.minImpactTime + this.maxImpactTime) / 2;
+        }
+
+        break;
+
+    }
+  }
+
+
+  //  setError( typeField: string) {
+  //
+  // }
+
+
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from '../interfaces';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {userAPI} from '../const';
+import {JSON_HEADER, STORAGE_SAVED_TYPES, userAPI} from '../const';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +16,7 @@ export class LoginService {
 
 
   register(user1: User): Observable<User> {
-    // console.log(JSON.stringify(user1));
-    const myHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post<User>(userAPI, JSON.stringify(user1), {headers: myHeaders});
-     // .subscribe(
-    //   next => {
-    //     this.setUser(next[0]);
-    //     localStorage.setItem('user', next[0].name);
-    //     localStorage.setItem('id', next[0].id);
-    //   }
-    // );
-    // return this.getUser();
+    return this.http.post<User>(userAPI, JSON.stringify(user1), {headers: JSON_HEADER});
   }
 
 
@@ -36,10 +26,14 @@ export class LoginService {
       this.http.get<Array<User>>(userAPI).subscribe(
         next => {
           elem = next.filter((el) => el.name === user1.name && el.password === user1.password);
-          this.setUser(elem[0]);
-          localStorage.setItem('user', elem[0].name);
-          localStorage.setItem('id', elem[0].id);
-          observer.next(elem[0]);
+          if (elem.length !== 0){
+            this.setUser(elem[0]);
+            localStorage.setItem(STORAGE_SAVED_TYPES.name, elem[0].name);
+            localStorage.setItem(STORAGE_SAVED_TYPES.id, elem[0].id);
+            observer.next(elem[0]);
+          }else {
+            observer.error('error');
+          }
         }
       );
     });

@@ -17,24 +17,40 @@
     </div>
     <div class="parametres-min">
       <div class="col-header">Min</div>
-      <div class="line"><input type="number" class="risk-min-probability"></div>
-      <div class="errors"></div>
-      <div class="line"><input type="number" class="risk-min-impact"></div>
-      <div class="errors"></div>
+      <div class="line"><input type="number" class="risk-min-probability" [(ngModel)] = "minProbability" (ngModelChange)="onFieldChange('min_probability')"> %</div>
+      <div class="errors">
+        <div class="helper-text red-text input__error">
+          <span *ngIf="error === 'min_probability'"> Min should be less than Max</span>
+        </div>
+      </div>
+      <div class="line"><input type="number" class="risk-min-impact" [(ngModel)] = "minImpactTime" (ngModelChange)="onFieldChange('min_impactTime')"> h</div>
+      <div class="errors">
+        <div class="helper-text red-text input__error">
+          <span *ngIf="error === 'min_impactTime'"> Min should be less than Max</span>
+        </div>
+      </div>
     </div>
     <div class="parametres-likely">
       <div class="col-header">Likely</div>
-      <div class="line"><input type="number" class="risk-likely-probability"  [(ngModel)] = "changedRisk.probability"></div>
+      <div class="line"><input type="number" class="risk-likely-probability"  [(ngModel)] = "changedRisk.probability" (change)="onFieldChange('probability')"> %</div>
       <div class="errors"></div>
-      <div class="line"><input type="number" class="risk-likely-impact" [(ngModel)] = "changedRisk.impactTime"></div>
+      <div class="line"><input type="number" class="risk-likely-impact" [(ngModel)] = "changedRisk.impactTime" (change)="onFieldChange('impactTime')"> h</div>
       <div class="errors"></div>
     </div>
     <div class="parametres-max">
       <div class="col-header">Max</div>
-      <div class="line"><input type="number" class="risk-max-probability"></div>
-      <div class="errors"></div>
-      <div class="line"><input type="number" class="risk-max-impact"></div>
-      <div class="errors"></div>
+      <div class="line"><input type="number" class="risk-max-probability" [(ngModel)] = "maxProbability" (ngModelChange)="onFieldChange('max_probability')"> %</div>
+      <div class="errors">
+        <div class="helper-text red-text input__error">
+          <span *ngIf="error === 'max_probability'"> Max should be more than Min</span>
+        </div>
+      </div>
+      <div class="line"><input type="number" class="risk-max-impact" [(ngModel)] = "maxImpactTime" (ngModelChange)="onFieldChange('max_impactTime')"> h</div>
+      <div class="errors">
+        <div class="helper-text red-text input__error">
+          <span *ngIf="error === 'max_impactTime'"> Max should be more than Min</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -44,7 +60,7 @@
 
   <div class="edit-risk-action">
     <button  class="modal-action btn left" (click)="onApply()"><span>Apply</span></button>
-    <button  class="modal-action btn right" (click)="onRemove()" *ngIf="manageRisk"><span>Remove</span></button>
-    <button  class="modal-action btn right" (click)="onReset()"><span>Reset</span></button>
+    <button  class="modal-action btn red right" (click)="onRemove()" *ngIf="manageRisk"><span>Remove</span></button>
+    <button  class="modal-action btn red right" (click)="onReset()"><span>Reset</span></button>
   </div>
 </div>
