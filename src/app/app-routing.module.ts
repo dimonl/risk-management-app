@@ -7,19 +7,18 @@ import {MainPageComponent} from './main-page/main-page.component';
 import {LoginGuard} from './shared/login.guard';
 
 const routes: Routes = [
-  // {path: '', redirectTo "/login"},
   {
     path: '', component: AuthLayoutComponent, children: [
       {path: '', redirectTo: '/login', pathMatch: 'full'},
       {path: 'login', component: LoginComponent}
     ]
   },
-  { // canActivate: [LoginGuard],
-    path: '', component: AppLayoutComponent, canActivate: [LoginGuard],  children: [
-     {path: 'mainpage', component: MainPageComponent},
+  {
+    path: '', component: AppLayoutComponent, canActivate: [LoginGuard], children: [
+      {path: 'mainpage', component: MainPageComponent},
     ]
   }
-  ];
+];
 
 @NgModule({
   imports: [
@@ -29,5 +28,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 }

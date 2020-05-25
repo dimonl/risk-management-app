@@ -29,6 +29,6 @@ export class AppRisksTabComponent implements OnInit {
   }
 
   AddRisk(): void {
-    this.riskService.setSelectedRisk(newRisk);// emptyRisk
+    this.riskService.setSelectedRisk(newRisk);
   }
 }

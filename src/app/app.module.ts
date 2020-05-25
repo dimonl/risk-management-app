@@ -9,7 +9,6 @@ import {AppRoutingModule} from './app-routing.module';
 import { AuthLayoutComponent } from './login-page/layouts/auth-layout/auth-layout.component';
 import { AppLayoutComponent } from './main-page/layouts/app-layout/app-layout.component';
 import {HttpClientModule} from '@angular/common/http';
-import {LoginService} from './shared/services/login.service';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AppControlPanelComponent } from './main-page/app-control-panel/app-control-panel.component';
 import { AppRisksTabComponent } from './main-page/app-risks-tab/app-risks-tab.component';
